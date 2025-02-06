@@ -1,41 +1,31 @@
 import React from "react";
+import "./stepper.css"; // Ensure to include this CSS
 
-const Stepper = ({ currentStep, steps, setCurrentStep }) => {
+const Stepper = ({ currentStep }) => {
+  const steps = [
+    "Borrower Company Info",
+    "Director Info",
+    "Financial Info",
+    "Past Performance Details",
+    "Document Upload",
+  ];
+
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        marginBottom: "20px",
-      }}
-    >
+    <div className="stepper-container">
       {steps.map((step, index) => (
-        <div
-          key={index}
-          onClick={() => setCurrentStep(index)}
-          style={{
-            padding: "10px 20px",
-            margin: "0 5px",
-            cursor: "pointer",
-            borderBottom:
-              currentStep === index ? "2px solid blue" : "2px solid gray",
-            color: currentStep === index ? "blue" : "gray",
-            fontWeight: "bold",
-          }}
-        >
-          {/* {step} */}
-          <nav className="progress-nav">
-            <div className="step active">1</div>
-            <div style={{display:'flex'}}>Borrower Company Info</div>
-            <div className="step">2</div>
-            <span>Director Info</span>
-            <div className="step">3</div>
-            <span>Financial Info</span>
-            <div className="step">4</div>
-            <span>Past Performance Details</span>
-            <div className="step">5</div>
-            <span>Document Upload</span>
-          </nav>
+        <div key={index} className="step-item">
+          {/* Step Number */}
+          <div className={`step-circle ${index === currentStep ? "active" : ""} ${index < currentStep ? "completed" : ""}`}>
+            {index + 1}
+          </div>
+
+          {/* Dotted Line (Not for last step) */}
+          {index !== steps.length - 1 && <div className="dotted-line"></div>}
+
+          {/* Step Label */}
+          <span className={`step-label ${index === currentStep ? "active-label" : ""}`}>
+            {step}
+          </span>
         </div>
       ))}
     </div>

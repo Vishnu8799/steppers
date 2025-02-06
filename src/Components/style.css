@@ -1,95 +1,177 @@
 body {
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-  }
-  
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbar Styling */
+.form-container::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+
+.form-container::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Light grey */
+  border-radius: 10px;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background: #888; /* Dark grey */
+  border-radius: 10px;
+}
+
+.form-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker on hover */
+}
+
 .form-container {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-height: 350px; /* 🔥 Reduced from 500px to 350px */
+  overflow-y: auto; /* Scrollable */
+  overflow-x: hidden;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  background-color: white;
+  margin: 20px auto;
+  position: relative;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* File Upload Section */
+.file-upload {
+  margin-top: 10px; /* 🔥 Removed sticky positioning */
+  width: 100%;
+  padding: 10px;
+  background: white;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Sticky Footer */
+.footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  text-align: center;
+  padding: 8px;
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+  z-index: 20;
+}
+
+/* Button Section */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 0;
+  background: white;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  border-top: 1px solid #ddd;
+}
+
+button {
+  padding: 12px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:first-child {
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+}
+
+button:first-child:hover {
+  background-color: #f0f8ff;
+}
+
+button:last-child {
+  border: none;
+  background-color: #007bff;
+  color: white;
+}
+
+button:last-child:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .form-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button-group {
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    height: 600px;
-    width: 80%;
-    padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
-    background-color: white;
   }
 
-  .heading{
-    width: 80%;
-    display: flex;
-  }
-  
-  .form-box {
+  button {
     width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  
-  h2 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .grid-container {
-    display: flex;
-    grid-template-columns: 2fr 2fr;
-    gap: 40px;
-    justify-content: space-between;
-
-  }
-  
-  input, select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-  }
-  
-  .file-upload {
     margin-top: 10px;
   }
-  
-  .file-upload input {
-    display: block;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  button:first-child {
-    border: 1px solid #007bff;
-    background-color: white;
-    color: #007bff;
-  }
-  
-  button:last-child {
-    border: none;
-    background-color: #007bff;
-    color: white;
-  }
-  
+}

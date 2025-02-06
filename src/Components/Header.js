@@ -11,8 +11,7 @@ const Header = () => {
       <div className="user-profile">
         <div className="user-initials">GC</div>
         <span className="username">Gregory Clark</span>
-        <span><i class="arrow down"></i>
-        </span>
+        <i className="arrow down"></i> {/* Directly using the arrow */}
       </div>
     </header>
   );
